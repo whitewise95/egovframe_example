@@ -17,5 +17,63 @@
 		<result property="subject" column="subject"/>
 	</resultMap>
 
+	<insert id="boardDAO.insertBoard" parameterClass="boardVO">
+		INSERT INTO board (
+		 					
+		 					 SUBJECT
+		 					, WRITER
+		 					, PASSWORD
+		 					, CONTENT
+		 					, READ_COUNT
+		 					, REG_DATE
+		 					)
+		VALUES  			(
+							   
+							  #subject#
+							 , #writer#
+							 , #password#
+							 , #content#
+							 , 0
+							 , now())
+	</insert>
+	<select id="boardDAO.selectBoardList" resultMap="sample2">
+		SELECT
+				*
+		FROM
+				BOARD
+	</select>
+		<select id="boardDAO.selectBoardInfo" parameterClass="int" resultMap="sample2">
+		SELECT
+				*
+		FROM
+				BOARD
+				
+		WHERE 
+				NUM = #num#
+	
+	</select>
+	<select id="boardDAO.selectPassWord" parameterClass="boardVO" resultClass="String">
+		SELECT
+				SUBJECT
+		FROM
+				BOARD
+				
+		WHERE 
+				NUM = #num# AND PASSWORD=#password#
+	</select>
+	<update id="boardDAO.updateBoard" parameterClass="boardVO">
+		UPDATE BOARD
+		SET 
+			SUBJECT = #subject#,
+			WRITER = #writer#,
+			CONTENT = #content#	
+		WHERE
+				NUM = #num#
+	</update>
+	<delete id="boardDAO.deleteBoard" parameterClass="boardVO">
+		DELETE FROM BOARD
+		WHERE NUM = #num#
+	</delete>
+	
 
 </sqlMap>
