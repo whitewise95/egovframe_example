@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+
+<sqlMap namespace="board">
+
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="boardVO" type="egovframework.example.sample.service.BoardVO"/>
+	
+	<resultMap id="sample2" class="egovframework.example.sample.service.BoardVO">
+		<result property="num" column="num"/>
+		<result property="writer" column="writer"/>
+		<result property="password" column="password"/>
+		<result property="content" column="content"/>
+		<result property="regDate" column="REG_DATE"/>
+		<result property="readCount" column="read_count"/>
+		<result property="subject" column="subject"/>
+	</resultMap>
+
+
+</sqlMap>
